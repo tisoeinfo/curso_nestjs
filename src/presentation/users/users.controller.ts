@@ -29,6 +29,8 @@ export class UsersController {
 
     }
 
+    // @Body() body: CreateUserDto → NestJS agarra el JSON que envías en el POST y lo convierte en un objeto del tipo CreateUserDto.
+    // Promise<User> → promete devolver un User creado.
     @Post()
     async create(@Body() body: CreateUserDto): Promise<User> {
         return await this.createUserUseCase.execute(body);

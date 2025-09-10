@@ -1,12 +1,25 @@
 export class User {
-    constructor(
-        public readonly id: number,
-        public nombre: string,
-        public email: string,
-    ) { }
 
-    // Ejemplo de lógica de negocio:
-    cambiarEmail(nuevoEmail: string) {
-        this.email = nuevoEmail;
+    public readonly id: number;
+    public nombre: string;
+    public email: string;
+    
+
+    constructor(id: number, nombre: string, email: string) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+
     }
+
 }
+
+
+// Atajos
+// class User {
+//   constructor(
+//     public readonly id: number,
+//     public nombre: string,
+//     public email: string
+//   ) {}
+// }
