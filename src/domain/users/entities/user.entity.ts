@@ -1,21 +1,38 @@
+
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+
+@Entity('users') // tabla users
 export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    public readonly id: number;
-    public nombre: string;
-    public email: string;
-    
+  @Column()
+  nombre: string;
 
-    constructor(id: number, nombre: string, email: string) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-
-    }
-
+  @Column()
+  email: string;
 }
 
 
-// Atajos
+//Esto es como estaba antes v2, nuestras pruebas con los arreglos []
+// export class User {
+
+//     public readonly id: number;
+//     public nombre: string;
+//     public email: string;
+    
+
+//     constructor(id: number, nombre: string, email: string) {
+//         this.id = id;
+//         this.nombre = nombre;
+//         this.email = email;
+
+//     }
+
+// }
+
+
+// Esto es como estaba antes v1
 // class User {
 //   constructor(
 //     public readonly id: number,

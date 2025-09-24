@@ -1,15 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepositoryImpl } from '../../../infrastructure/users/repositories/user.repository.impl';
+// import { UserRepositoryImpl } from '../../../infrastructure/users/repositories/user.repository.impl';
 import { User } from '../../../domain/users/entities/user.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ListUsersUseCase {
-  // execute(): string {
-  //   return "Listamos todos los usuarios";
-  // }
-  constructor(private readonly userRepository: UserRepositoryImpl) {}
+
+
+
+  constructor(
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) { }
 
   async execute(): Promise<User[]> {
-    return await this.userRepository.findAll();
+    // El metodo find() de TypeORM equivale a un select * from users
+    return await this.userRepository.find();
   }
 }
