@@ -8,6 +8,7 @@ import { UpdateUserUseCase } from 'src/application/users/use-cases/update-user.u
 import { DeleteUserUseCase } from 'src/application/users/use-cases/delete-user.usecase';
 // import { UserRepositoryImpl } from '../../infrastructure/users/repositories/user.repository.impl';
 import { User } from 'src/domain/users/entities/user.entity';
+import { FindUserByUsernameUseCase } from 'src/application/users/use-cases/find-user-by-username.usecase';
 
 
 @Module({
@@ -18,6 +19,8 @@ import { User } from 'src/domain/users/entities/user.entity';
     FindUserUseCase,
     CreateUserUseCase,
     UpdateUserUseCase,
-    DeleteUserUseCase],
+    DeleteUserUseCase,
+    FindUserByUsernameUseCase],
+    exports: [FindUserByUsernameUseCase], //  exportamos para que AuthModule lo use
 })
 export class UsersModule { }

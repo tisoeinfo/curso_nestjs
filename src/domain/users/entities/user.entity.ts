@@ -7,10 +7,10 @@ export class User {
   id: number;
 
   @Column()
-  nombre: string;
+  username: string;
 
   @Column()
-  email: string;
+  password: string; // Añadido para autenticación
 }
 
 

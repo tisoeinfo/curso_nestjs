@@ -7,6 +7,10 @@ import { CreateUserDto } from '../../application/users/dto/create-user.dto';
 import { UpdateUserDto } from '../../application/users/dto/update-user.dto';
 import { DeleteUserUseCase } from '../../application/users/use-cases/delete-user.usecase';
 import { User } from '../../domain/users/entities/user.entity';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { Request } from '@nestjs/common';
+
 
 @Controller('users')
 export class UsersController {
@@ -35,6 +39,15 @@ export class UsersController {
         return await this.listUsersUseCase.execute();
     }
 
+    @UseGuards(AuthGuard('jwt'))
+    @Get('profile')
+    getProfile(@Request() req) {
+        // return { msg: 'Solo accedes si tienes token válido' };
+        console.log('Usuario en req.user:', req.user);
+        return req.user;
+
+    }
+
     //http://localhost:3000/users/10
     @Get(':id')
     async findOne(@Param('id') id: string): Promise<User | null> {
@@ -57,6 +70,5 @@ export class UsersController {
         await this.deleteUserUseCase.execute(Number(id));
         return { message: `Usuario con id ${id} eliminado correctamente` };
     }
-
 
 }
