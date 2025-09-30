@@ -7,7 +7,7 @@ import { CreateUserDto } from '../dto/create-user.dto';
 
 
 @Injectable()
-export class CreateUserUseCase {
+export class CreateUserUseCase { 
   constructor(
     @InjectRepository(User)
     //Cuando usas TypeORM, NestJS ya te da un Repository<User>
