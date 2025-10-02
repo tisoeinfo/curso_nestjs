@@ -8,9 +8,11 @@ import { DatabaseModule } from '../../infrastructure/database/database.module';
 @Module({
   imports: [DatabaseModule], // ahora se trae MySQLService desde aquí
   controllers: [ProductsController],
-  providers: [
-     CreateProductUseCase, 
-     ListProductsUseCase, 
-     ProductRepositoryImpl],
+  providers:
+    [
+      CreateProductUseCase,
+      ListProductsUseCase,
+      ProductRepositoryImpl
+    ],
 })
-export class ProductsModule {}
+export class ProductsModule { }

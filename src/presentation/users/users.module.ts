@@ -14,13 +14,15 @@ import { FindUserByUsernameUseCase } from 'src/application/users/use-cases/find-
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UsersController],
-  providers: [
-    ListUsersUseCase,
-    FindUserUseCase,
-    CreateUserUseCase,
-    UpdateUserUseCase,
-    DeleteUserUseCase,
-    FindUserByUsernameUseCase],
-    exports: [FindUserByUsernameUseCase], //  exportamos para que AuthModule lo use
+  providers:
+    [
+      ListUsersUseCase,
+      FindUserUseCase,
+      CreateUserUseCase,
+      UpdateUserUseCase,
+      DeleteUserUseCase,
+      FindUserByUsernameUseCase
+    ],
+  exports: [FindUserByUsernameUseCase], //  exportamos para que AuthModule lo use
 })
 export class UsersModule { }

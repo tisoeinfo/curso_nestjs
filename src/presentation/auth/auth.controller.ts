@@ -1,17 +1,17 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { AuthService } from './auth.service';
-import { CreateUserDto } from '../../application/users/dto/create-user.dto';
+import { LoginUseCase } from '../../application/auth/use-cases/login.usecase';
+
 
 @Controller('auth')
 export class AuthController {
     constructor(
-        private readonly authService: AuthService,
+        private readonly loginUseCase: LoginUseCase
     ) { }
 
-    // Login valida y devuelve token
+    // El Login valida y devuelve token
+    //http://localhost:3000/auth/login
     @Post('login')
     async login(@Body() body: { username: string; password: string }) {
-        return this.authService.login(body.username, body.password);
+        return this.loginUseCase.execute(body.username, body.password);
     }
 }

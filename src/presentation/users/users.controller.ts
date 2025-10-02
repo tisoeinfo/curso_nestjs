@@ -34,19 +34,22 @@ export class UsersController {
     }
 
     //http://localhost:3000/users
+     // Solo admin debería poder listar todos, esta protegido
+    @UseGuards(AuthGuard('jwt'))
     @Get()
     async findAll(): Promise<User[]> {
         return await this.listUsersUseCase.execute();
     }
 
+    /*// Al pasar 'jwt', Nest le dice a Passport: usa la estrategia de autenticación registrada con el nombre jwt
     @UseGuards(AuthGuard('jwt'))
     @Get('profile')
     getProfile(@Request() req) {
         // return { msg: 'Solo accedes si tienes token válido' };
         console.log('Usuario en req.user:', req.user);
+        //el req.user es oblgatorio para devolver ese 
         return req.user;
-
-    }
+    }*/
 
     //http://localhost:3000/users/10
     @Get(':id')

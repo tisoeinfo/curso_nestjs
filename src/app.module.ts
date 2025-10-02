@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-
-import { UsersModule } from './presentation/users/users.module';
-import { ProductsModule } from './presentation/products/products.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './domain/users/entities/user.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { ProductsModule } from './presentation/products/products.module';
+import { UsersModule } from './presentation/users/users.module';
 import { AuthModule } from './presentation/auth/auth.module';
 
 @Module({
@@ -26,8 +26,8 @@ import { AuthModule } from './presentation/auth/auth.module';
         synchronize: true,
       }),
     }),
-    UsersModule,
     ProductsModule,
+    UsersModule,
     AuthModule],
 
 })

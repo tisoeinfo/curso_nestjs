@@ -1,0 +1,6 @@
+@ -> Todo lo que se vea con este signo @ se llama decorados
+any -> significa "puede venir cualquier cosa".
+interface -> Se define como un contrato porque cuando se llame se tiene que cumplir los metodos o propiedades que ha sido declarado en esa clase interface
+providers -> Todo lo que declares en providers, está disponible solo dentro de ese módulo.
+exports -> Si quieres que otro módulo pueda usar ese provider, tienes que exportarlo
+constructor(private readonly findUserByUsername: FindUserByUsernameUseCase) { } -> Esto se llama inyectar dependencias, es como se hacia en CI3, gracias a eso puedo llamar a todo lo que tenga la clase.
