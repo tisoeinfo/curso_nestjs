@@ -10,7 +10,9 @@ export class ProductRepositoryImpl implements ProductRepository {
     constructor(private readonly db: MySQLService) { }
 
     async findAll(): Promise<Product[]> {
-        const [rows] = await this.db.getPool().query('SELECT * FROM products');
+        const rowsx = await this.db.getPool().query('SELECT * FROM products');
+        //MYSQL devuelve un array con 2 cosas, pero solo me interes rows (ahi estan los datos de la consulta)
+        const rows = rowsx[0];
         return (rows as any[]).map((row) => new Product(row.id, row.nombre, row.precio),);
     }
 
